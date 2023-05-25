@@ -15,7 +15,7 @@ pipeline {
         }
         stage("Build jar") {
             steps {
-                echo "Building the applicatiodddd.."
+                echo "Building the applicatiod v vddd.."
                
             }
         }
