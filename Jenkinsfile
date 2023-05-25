@@ -28,7 +28,7 @@ pipeline {
         stage("Deploy app") {
             steps {
                 echo "Deploying the application..."
-                echo "heldldddo toddddcece "
+                echo "heldldddo toddddddddcece "
             }
         }
     }
