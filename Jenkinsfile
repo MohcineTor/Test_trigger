@@ -1,57 +1,34 @@
-def gv 
 
+def branchName1
 pipeline {
     agent any
-    tools {
-        maven 'maven-3.6'
-    } 
+  
     stages {
-        stage('increment version') {
+        stage("show branch"){
             steps {
                 script {
-                    echo 'incrementing version app version ....'
-                    sh 'mvn build-helper:parse-version:set \
-                       -DnewVersion=\\\${parsedVersion.majorVersion}.\\\${parsedVersion.minorVersion}.\\\${parsedVersion.nextIncrementalVersion} \
-                       version:commit'
-                    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-                    def version = matcher[0][1]
-                    env.IMAGE_NAME = "$version-$BUILD_NUMBER"
+                    def branchv1 = env.GIT_BRANCH
+                    branchName1 = branchv1.substring("origin/".length())
+                    echo "Branch name v7:${branchName1}"
                 }
             }
         }
-        stage("Init") {
+        stage("Build jar") {
             steps {
-                script {
-                    gv = load "script.groovy"
-                }
+                echo "Building the application  .."
+               
             }
         }
-        stage("Build") {
+        stage("Build image") {
             steps {
-                script {
-                    gv.buildJar()
-                }
+                echo "Building the Docker image... "
+               
             }
         }
-        stage("Test") {
+        stage("Deploy app") {
             steps {
-                script {
-                    gv.testApp()
-                }
-            }
-        }
-        stage("Build Image") {
-            steps {
-                script {
-                    gv.buildImage("${IMAGE_NAME}")
-                }
-            }
-        }
-        stage("Deploy") {
-            steps {
-                script {
-                    gv.deployApp()
-                }
+                echo "Deploying the application..."
+                echo "hello to ksgddzdzazdfdgdks "
             }
         }
     }
