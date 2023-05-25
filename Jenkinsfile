@@ -15,7 +15,7 @@ pipeline {
         }
         stage("Build jar") {
             steps {
-                echo "Buildinfrfrg the applicatiosssd v vddd.."
+                echo "Buildinfrfrg the applicatiosssrrrrd v vddd.."
                
             }
         }
